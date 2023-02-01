@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+
+  ci:
+    image: ghcr.io/internetofwater/nldi-db:ci
+    environment:
+      - POSTGRES_PASSWORD=changeMe
+      - NLDI_DATABASE_ADDRESS=127.0.0.1
+      - NLDI_DATABASE_NAME=nldi
+      - NLDI_DB_OWNER_USERNAME=nldi
+      - NLDI_DB_OWNER_PASSWORD=changeMe
+      - NLDI_SCHEMA_OWNER_USERNAME=nldi_schema_owner
+      - NLDI_SCHEMA_OWNER_PASSWORD=changeMe
+      - NHDPLUS_SCHEMA_OWNER_USERNAME=nhdplus
+      - NLDI_READ_ONLY_USERNAME=read_only_user
+      - NLDI_READ_ONLY_PASSWORD=changeMe
+    ports:
+      - 5432:5432
+    container_name: nldi-db-ci

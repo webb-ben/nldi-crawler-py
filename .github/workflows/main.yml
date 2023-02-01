@@ -1,0 +1,27 @@
+name: test ⚙️
+
+on: [ push, pull_request ]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install nox 📦
+      uses: wntrblm/nox@2022.8.7
+    - name: install poetry 📦
+      uses: snok/install-poetry@v1
+    - name: run nldi-db
+      run: |
+        cd tests
+        docker-compose up -d
+    - name: install nldi-crawler
+      run: |
+        poetry install
+    - name: run integration tests ⚙️
+      run: |
+        nox -s test
+    - name: run lint ⚙️
+      run: |
+        nox -s lint

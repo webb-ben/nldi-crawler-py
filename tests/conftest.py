@@ -19,13 +19,11 @@ def dal():
         "postgresql+psycopg",
         username="nldi_schema_owner",
         password="changeMe",
-        host="172.18.0.1",
+        host="127.0.0.1",
         port="5432",
         database="nldi",
     )
-    _dal = DataAccessLayer(url)
-    yield _dal
-    _dal.disconnect()
+    yield DataAccessLayer(url)
 
 
 @pytest.fixture(scope="session")

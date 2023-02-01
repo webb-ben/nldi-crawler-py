@@ -18,7 +18,7 @@ def test_failed_db_connection():
         "postgresql+psycopg",
         username="nldi_schema_owner",
         password="invalid",  ##<<< this will cause password authentication fail
-        host="172.18.0.1",
+        host="127.0.0.1",
         port="5432",
         database="nldi",
     )
@@ -26,7 +26,7 @@ def test_failed_db_connection():
     dal.connect()
     with dal.Session() as session:
         _ = session.execute(text("SELECT crawler_source_id FROM nldi_data.crawler_source"))
-    assert True  ## if we get to here, then this did not XFAIL.  Problem.
+    assert False  ## if we get to here, then this did not XFAIL.  Problem.
 
 
 def test_dal(dal):

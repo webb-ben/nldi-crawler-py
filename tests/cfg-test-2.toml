@@ -1,5 +1,5 @@
 [default]
-hostname: 172.18.0.1
+hostname: 127.0.0.1
 port: 5432
 username: nldi_schema_owner
 password: "changeMe"
